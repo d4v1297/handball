@@ -159,12 +159,12 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                             concededCounterattakRadioButton = new JRadioButton("Gegentor Gegenstoß");
 
 
-                            actionGroup.add(hitKeeperRadioButton);
-                            actionGroup.add(missKeeperRadioButton);
+                            actionPanel.add(hitKeeperRadioButton);
+                            actionPanel.add(missKeeperRadioButton);
 
-                            actionGroup.add(saveNineRadioButton);
-                            actionGroup.add(saveSevenRadioButton);
-                            actionGroup.add(saveSixRadioButton);
+                            actionPanel.add(saveNineRadioButton);
+                            actionPanel.add(saveSevenRadioButton);
+                            actionPanel.add(saveSixRadioButton);
                             actionPanel.add(saveWingRadioButton);
                             actionPanel.add(saveBreakthroughRadioButton);
                             actionPanel.add(saveCounterattakRadioButton);
@@ -191,9 +191,9 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                             missedBreakthroughRadioButton = new JRadioButton("Fehlwurf Durchbruch");
                             missedCounterattakRadioButton = new JRadioButton("Fehlwurf Gegenstoß");
 
-                            actionGroup.add(goalNineRadioButton);
-                            actionGroup.add(goalSevenRadioButton);
-                            actionGroup.add(goalSixRadioButton);
+                            actionPanel.add(goalNineRadioButton);
+                            actionPanel.add(goalSevenRadioButton);
+                            actionPanel.add(goalSixRadioButton);
                             actionPanel.add(goalWingRadioButton);
                             actionPanel.add(goalBreakthroughRadioButton);
                             actionPanel.add(goalCounterattakRadioButton);
