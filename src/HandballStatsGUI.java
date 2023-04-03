@@ -231,8 +231,8 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                     actionPanel.add(technicalMistakeRadioButton);
                     actionPanel.add(passCatchMistakeRadioButton);
 
-                    /*int result = JOptionPane.showConfirmDialog(gamePanel, actionPanel, "Aktion für " + name, JOptionPane.OK_CANCEL_OPTION);
-                    if (result == JOptionPane.OK_OPTION) {
+                    int result = JOptionPane.showConfirmDialog(gamePanel, actionPanel, "Aktion für " + name, JOptionPane.OK_CANCEL_OPTION);
+                    /*if (result == JOptionPane.OK_OPTION) {
                         if (hitKeeperRadioButton.isSelected()) {
                             // Tor erzielt
                             player.incrementGoals();
