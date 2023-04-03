@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class HandballStatsGUI extends JFrame implements ActionListener {
@@ -10,26 +10,54 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
     private JRadioButton fieldPlayerRadioButton;
     private JRadioButton goalkeeperRadioButton;
 
+    //Spieler Radio Buttons
+    private JRadioButton lossOfBallRadioButton;
+    private JRadioButton ballWinRadioButton;
+    private JRadioButton assistRadioButton;
+    private JRadioButton technicalMistakeRadioButton;
+    private JRadioButton passCatchMistakeRadioButton;
+
+    private JRadioButton fetchedSevenMRadioButton;
+    private JRadioButton causedSevenMRadioButton;
+
+    private JRadioButton fetchedTwoMinutesRadioButton;
+    private JRadioButton yellowCardRadioButton;
+    private JRadioButton twoMinutesRadioButton;
+    private JRadioButton redCardRadioButton;
+
     //Torhüter Radio Buttons
     private JRadioButton hitKeeperRadioButton;
     private JRadioButton missKeeperRadioButton;
+
     private JRadioButton saveNineRadioButton;
     private JRadioButton saveSevenRadioButton;
     private JRadioButton saveSixRadioButton;
     private JRadioButton saveWingRadioButton;
     private JRadioButton saveBreakthroughRadioButton;
     private JRadioButton saveCounterattakRadioButton;
-    private JRadioButton lossOfBallRadioButton;
-    private JRadioButton ballWinRadioButton;
-    private JRadioButton assistRadioButton;
-    private JRadioButton fetchedSevenMRadioButton;
-    private JRadioButton causedSevenMRadioButton;
-    private JRadioButton fetchedTwoMinutesRadioButton;
-    private JRadioButton yellowCardRadioButton;
-    private JRadioButton twoMinutesRadioButton;
-    private JRadioButton redCardRadioButton;
-    private JRadioButton technicalMistakeRadioButton;
-    private JRadioButton passCatchMistakeRadioButton;
+
+    private JRadioButton concededNineRadioButton;
+    private JRadioButton concededSevenRadioButton;
+    private JRadioButton concededSixRadioButton;
+    private JRadioButton concededWingRadioButton;
+    private JRadioButton concededBreakthroughRadioButton;
+    private JRadioButton concededCounterattakRadioButton;
+
+    //Feldspeler  Radio Buttons
+    private JRadioButton goalNineRadioButton;
+    private JRadioButton goalSevenRadioButton;
+    private JRadioButton goalSixRadioButton;
+    private JRadioButton goalWingRadioButton;
+    private JRadioButton goalBreakthroughRadioButton;
+    private JRadioButton goalCounterattakRadioButton;
+
+    private JRadioButton missedNineRadioButton;
+    private JRadioButton missedSevenRadioButton;
+    private JRadioButton missedSixRadioButton;
+    private JRadioButton missedWingRadioButton;
+    private JRadioButton missedBreakthroughRadioButton;
+    private JRadioButton missedCounterattakRadioButton;
+
     private JButton savePlayerButton;
     private JButton startGameButton;
     private JTextArea playerListArea;
@@ -77,13 +105,13 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
         inputPanel.add(savePlayerButton);
         inputPanel.add(startGameButton);
         add(inputPanel, BorderLayout.NORTH);
-//TODO
         JScrollPane scrollPane = new JScrollPane(playerListArea);
         add(scrollPane, BorderLayout.CENTER);
 
         // Spielerliste initialisieren
         playerMap = new HashMap<>();
     }
+
 
     // Event-Handler für den "Spieler speichern"-Button und "Spiel starten"-Button
     public void actionPerformed(ActionEvent e) {
@@ -110,34 +138,89 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                     public void actionPerformed(ActionEvent e) {
                         // Aktion-Button wurde geklickt
                         JPanel actionPanel = new JPanel(new GridLayout(3, 1));
-                        hitKeeperRadioButton = new JRadioButton("Tor durch Torhüter");
-                        missKeeperRadioButton = new JRadioButton("Fehlwurf durch Torhüter");
-                        saveNineRadioButton = new JRadioButton("Parade 9m");
-                        saveSevenRadioButton = new JRadioButton("Parade 7m");
-                        saveSixRadioButton = new JRadioButton("Parade 6m");
-                        saveWingRadioButton = new JRadioButton("Parade Flügel");
-                        saveBreakthroughRadioButton = new JRadioButton("Parade Durchbruch");
-                        saveCounterattakRadioButton = new JRadioButton("Parade Gegenstoß");
+                        ButtonGroup actionGroup = new ButtonGroup();
+                        if (player.isGoalkeeper()) {
+
+                            hitKeeperRadioButton = new JRadioButton("Tor durch Torhüter");
+                            missKeeperRadioButton = new JRadioButton("Fehlwurf durch Torhüter");
+
+                            saveNineRadioButton = new JRadioButton("Parade 9m");
+                            saveSevenRadioButton = new JRadioButton("Parade 7m");
+                            saveSixRadioButton = new JRadioButton("Parade 6m");
+                            saveWingRadioButton = new JRadioButton("Parade Flügel");
+                            saveBreakthroughRadioButton = new JRadioButton("Parade Durchbruch");
+                            saveCounterattakRadioButton = new JRadioButton("Parade Gegenstoß");
+
+                            concededNineRadioButton = new JRadioButton("Gegentor 9m");
+                            concededSevenRadioButton = new JRadioButton("Gegentor 7m");
+                            concededSixRadioButton = new JRadioButton("Gegentor 6m");
+                            concededWingRadioButton = new JRadioButton("Gegentor Flügel");
+                            concededBreakthroughRadioButton = new JRadioButton("Gegentor Durchbruch");
+                            concededCounterattakRadioButton = new JRadioButton("Gegentor Gegenstoß");
+
+
+                            actionGroup.add(hitKeeperRadioButton);
+                            actionGroup.add(missKeeperRadioButton);
+
+                            actionGroup.add(saveNineRadioButton);
+                            actionGroup.add(saveSevenRadioButton);
+                            actionGroup.add(saveSixRadioButton);
+                            actionPanel.add(saveWingRadioButton);
+                            actionPanel.add(saveBreakthroughRadioButton);
+                            actionPanel.add(saveCounterattakRadioButton);
+
+                            actionPanel.add(concededNineRadioButton);
+                            actionPanel.add(concededSevenRadioButton);
+                            actionPanel.add(concededSixRadioButton);
+                            actionPanel.add(concededWingRadioButton);
+                            actionPanel.add(concededBreakthroughRadioButton);
+                            actionPanel.add(concededCounterattakRadioButton);
+
+                        } else if (!player.isGoalkeeper()) {
+                            goalNineRadioButton = new JRadioButton("Tor 9m");
+                            goalSevenRadioButton = new JRadioButton("Tor 7m");
+                            goalSixRadioButton = new JRadioButton("Tor 6m");
+                            goalWingRadioButton = new JRadioButton("Tor Flügel");
+                            goalBreakthroughRadioButton = new JRadioButton("Tor Durchbruch");
+                            goalCounterattakRadioButton = new JRadioButton("Tor Gegenstoß");
+
+                            missedNineRadioButton = new JRadioButton("Fehlwurf 9m");
+                            missedSevenRadioButton = new JRadioButton("Fehlwurf 7m");
+                            missedSixRadioButton = new JRadioButton("Fehlwurf 6m");
+                            missedWingRadioButton = new JRadioButton("Fehlwurf Flügel");
+                            missedBreakthroughRadioButton = new JRadioButton("Fehlwurf Durchbruch");
+                            missedCounterattakRadioButton = new JRadioButton("Fehlwurf Gegenstoß");
+
+                            actionGroup.add(goalNineRadioButton);
+                            actionGroup.add(goalSevenRadioButton);
+                            actionGroup.add(goalSixRadioButton);
+                            actionPanel.add(goalWingRadioButton);
+                            actionPanel.add(goalBreakthroughRadioButton);
+                            actionPanel.add(goalCounterattakRadioButton);
+
+                            actionPanel.add(missedNineRadioButton);
+                            actionPanel.add(missedSevenRadioButton);
+                            actionPanel.add(missedSixRadioButton);
+                            actionPanel.add(missedWingRadioButton);
+                            actionPanel.add(missedBreakthroughRadioButton);
+                            actionPanel.add(missedCounterattakRadioButton);
+
+                        }
+
                         lossOfBallRadioButton = new JRadioButton("Ballverlust");
                         ballWinRadioButton = new JRadioButton("Ballgewinn");
                         assistRadioButton = new JRadioButton("Assist");
+                        technicalMistakeRadioButton = new JRadioButton("Technischer Fehler");
+                        passCatchMistakeRadioButton = new JRadioButton("Pass-& Fangfehler");
+
                         fetchedSevenMRadioButton = new JRadioButton("7m geholt");
                         causedSevenMRadioButton = new JRadioButton("7m verursacht");
+
                         fetchedTwoMinutesRadioButton = new JRadioButton("2 Minuten geholt");
                         yellowCardRadioButton = new JRadioButton("Gelbe Karte");
                         twoMinutesRadioButton = new JRadioButton("2 Minuten");
                         redCardRadioButton = new JRadioButton("Rote Karte");
-                        technicalMistakeRadioButton = new JRadioButton("Technischer Fehler");
-                        passCatchMistakeRadioButton = new JRadioButton("Pass-& Fangfehler");
-                        ButtonGroup actionGroup = new ButtonGroup();
-                        actionGroup.add(hitKeeperRadioButton);
-                        actionGroup.add(missKeeperRadioButton);
-                        actionGroup.add(saveNineRadioButton);
-                        actionPanel.add(saveSevenRadioButton);
-                        actionPanel.add(saveSixRadioButton);
-                        actionPanel.add(saveWingRadioButton);
-                        actionPanel.add(saveBreakthroughRadioButton);
-                        actionPanel.add(saveCounterattakRadioButton);
+
                         actionPanel.add(lossOfBallRadioButton);
                         actionPanel.add(ballWinRadioButton);
                         actionPanel.add(assistRadioButton);
@@ -151,7 +234,7 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                         actionPanel.add(passCatchMistakeRadioButton);
 
                         int result = JOptionPane.showConfirmDialog(gamePanel, actionPanel, "Aktion für " + name, JOptionPane.OK_CANCEL_OPTION);
-                        if (result == JOptionPane.OK_OPTION) {
+                        /*if (result == JOptionPane.OK_OPTION) {
                             if (hitKeeperRadioButton.isSelected()) {
                                 // Tor erzielt
                                 player.incrementGoals();
@@ -163,8 +246,9 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                                 player.incrementAssists();
                             }
                             updatePlayerListArea();
-                        }
+                        }*/
                     }
+
                 });
                 gamePanel.add(playerLabel);
                 gamePanel.add(actionButton);
@@ -177,74 +261,6 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
             repaint();
         }
     }
-
-
-    // Methode zum Durchführen einer Aktion für einen bestimmten Spieler
-    private void performAction(Player player) {
-        // Dialog-Fenster für Aktionen anzeigen
-        JPanel actionPanel = new JPanel();
-        actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.Y_AXIS));
-            hitKeeperRadioButton = new JRadioButton("Tor durch Torhüter");
-            missKeeperRadioButton = new JRadioButton("Fehlwurf durch Torhüter");
-            saveNineRadioButton = new JRadioButton("Parade 9m");
-            saveSevenRadioButton = new JRadioButton("Parade 7m");
-            saveSixRadioButton = new JRadioButton("Parade 6m");
-            saveWingRadioButton = new JRadioButton("Parade Flügel");
-            saveBreakthroughRadioButton = new JRadioButton("Parade Durchbruch");
-            saveCounterattakRadioButton = new JRadioButton("Parade Gegenstoß");
-            lossOfBallRadioButton = new JRadioButton("Ballverlust");
-            ballWinRadioButton = new JRadioButton("Ballgewinn");
-            assistRadioButton = new JRadioButton("Assist");
-            fetchedSevenMRadioButton = new JRadioButton("7m geholt");
-            causedSevenMRadioButton = new JRadioButton("7m verursacht");
-            fetchedTwoMinutesRadioButton = new JRadioButton("2 Minuten geholt");
-            yellowCardRadioButton = new JRadioButton("Gelbe Karte");
-            twoMinutesRadioButton = new JRadioButton("2 Minuten");
-            redCardRadioButton = new JRadioButton("Rote Karte");
-            technicalMistakeRadioButton = new JRadioButton("Technischer Fehler");
-            passCatchMistakeRadioButton = new JRadioButton("Pass-& Fangfehler");
-
-            ButtonGroup actionGroup = new ButtonGroup();
-
-            actionGroup.add(hitKeeperRadioButton);
-            actionGroup.add(missKeeperRadioButton);
-            actionGroup.add(saveNineRadioButton);
-            actionPanel.add(saveSevenRadioButton);
-            actionPanel.add(saveSixRadioButton);
-            actionPanel.add(saveWingRadioButton);
-            actionPanel.add(saveBreakthroughRadioButton);
-            actionPanel.add(saveCounterattakRadioButton);
-            actionPanel.add(lossOfBallRadioButton);
-            actionPanel.add(ballWinRadioButton);
-            actionPanel.add(assistRadioButton);
-            actionPanel.add(fetchedSevenMRadioButton);
-            actionPanel.add(causedSevenMRadioButton);
-            actionPanel.add(fetchedTwoMinutesRadioButton);
-            actionPanel.add(yellowCardRadioButton);
-            actionPanel.add(twoMinutesRadioButton);
-            actionPanel.add(redCardRadioButton);
-            actionPanel.add(technicalMistakeRadioButton);
-            actionPanel.add(passCatchMistakeRadioButton);
-
-        int result = JOptionPane.showConfirmDialog(null, actionPanel, "Aktion auswählen", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            // Aktion-Button wurde geklickt
-            if (hitKeeperRadioButton.isSelected()) {
-                // Treffer
-                // Implementieren Sie hier die Logik, um einen Treffer für den Spieler durchzuführen
-                // Aktualisieren Sie gegebenenfalls die Anzeige in der gamePanel
-            } else if (missKeeperRadioButton.isSelected()) {
-                // Fehlwurf
-                // Implementieren Sie hier die Logik, um einen Fehlwurf für den Spieler durchzuführen
-                // Aktualisieren Sie gegebenenfalls die Anzeige in der gamePanel
-            } else if (saveNineRadioButton.isSelected()) {
-                // Block
-                // Implementieren Sie hier die Logik, um einen Block für den Spieler durchzuführen
-                // Aktualisieren Sie gegebenenfalls die Anzeige in der gamePanel
-            }
-        }
-    }
-
 
     // Methode zum Aktualisieren der Spielerliste-Anzeige
     private void updatePlayerListArea() {
