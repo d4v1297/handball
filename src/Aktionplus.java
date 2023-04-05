@@ -16,6 +16,7 @@ public class Aktionplus {
     static void updatePlayerStats(Player player, String action) {
         if (TORHUETER_AKTIONEN.contains(action) || FELDSPIELER_AKTIONEN.contains(action) || SPIELER_AKTIONEN.contains(action)) {
             incrementPlayerStat(player, action);
+            System.out.println(player.getGoalSix());
         } else {
             throw new IllegalArgumentException("Unbekannte Aktion: " + action);
         }
