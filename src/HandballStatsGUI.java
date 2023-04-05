@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Map;
 
 public class HandballStatsGUI extends JFrame implements ActionListener {
     private final JTextField nameField;
@@ -232,19 +233,95 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
                     actionPanel.add(passCatchMistakeRadioButton);
 
                     int result = JOptionPane.showConfirmDialog(gamePanel, actionPanel, "Aktion für " + name, JOptionPane.OK_CANCEL_OPTION);
-                    /*if (result == JOptionPane.OK_OPTION) {
+                    if (result == JOptionPane.OK_OPTION) {
+                        //Würfe Torhüter
                         if (hitKeeperRadioButton.isSelected()) {
-                            // Tor erzielt
-                            player.incrementGoals();
+                            Aktionplus.updatePlayerStats(player, "hitByKeeper");
                         } else if (missKeeperRadioButton.isSelected()) {
-                            // Fehlwurf
-                            player.incrementMisses();
-                        } else if (saveNineRadioButton.isSelected()) {
-                            // Assist
-                            player.incrementAssists();
+                            Aktionplus.updatePlayerStats(player, "missByKeeper");
+                        }
+                        //Paraden Tohüter
+                        else if (saveNineRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveNine");
+                        } else if (saveSevenRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveSeven");
+                        } else if (saveSixRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveSix");
+                        } else if (saveWingRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveWing");
+                        } else if (saveBreakthroughRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveBreakthrough");
+                        } else if (saveCounterattakRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "saveCounterattack");
+                        }
+                        //Gegentor Tohüter
+                        else if (concededNineRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededNine");
+                        } else if (concededSevenRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededSeven");
+                        } else if (concededSixRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededSix");
+                        } else if (concededWingRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededWing");
+                        } else if (concededBreakthroughRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededBreakthrough");
+                        } else if (concededCounterattakRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "concededCounterattack");
+                        }
+                        //Tore Feldspieler
+                        else if (goalNineRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalNine");
+                        } else if (goalSevenRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalSeven");
+                        } else if (goalSixRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalSix");
+                        } else if (goalWingRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalWing");
+                        } else if (goalBreakthroughRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalBreakthrough");
+                        } else if (goalCounterattakRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "goalCounterattack");
+                        }
+                        //Fehlwürfe Torhüter
+                        else if (missedNineRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedNine");
+                        } else if (missedSevenRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedSeven");
+                        } else if (missedSixRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedSix");
+                        } else if (missedWingRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedWing");
+                        } else if (missedBreakthroughRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedBreakthrough");
+                        } else if (missedCounterattakRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "missedCounterattack");
+                        }
+                        //Aktionen Spieler
+                        else if (lossOfBallRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "lossOfBall");
+                        } else if (ballWinRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "ballWin");
+                        } else if (assistRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "assist");
+                        } else if (fetchedSevenMRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "fetchedSevenM");
+                        } else if (causedSevenMRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "causedSevenM");
+                        } else if (fetchedTwoMinutesRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "fetchedTwoMinutes");
+                        } else if (yellowCardRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "yellowCard");
+                        } else if (twoMinutesRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "twoMinutes");
+                        } else if (redCardRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "redCard");
+                        } else if (technicalMistakeRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "technicalMistake");
+                        } else if (passCatchMistakeRadioButton.isSelected()) {
+                            Aktionplus.updatePlayerStats(player, "passCatchMistake");
                         }
                         updatePlayerListArea();
-                    }*/
+                    }
                 });
                 gamePanel.add(playerLabel);
                 gamePanel.add(actionButton);
