@@ -1,59 +1,62 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Player {
+    public enum Action {
+        HIT_BY_KEEPER,
+        MISS_BY_KEEPER,
+        SAVE_NINE,
+        SAVE_SEVEN,
+        SAVE_SIX,
+        SAVE_WING,
+        SAVE_BREAKTHROUGH,
+        SAVE_COUNTERATTACK,
+        CONCEDED_NINE,
+        CONCEDED_SEVEN,
+        CONCEDED_SIX,
+        CONCEDED_WING,
+        CONCEDED_BREAKTHROUGH,
+        CONCEDED_COUNTERATTACK,
+        GOAL_NINE,
+        GOAL_SEVEN,
+        GOAL_SIX,
+        GOAL_WING,
+        GOAL_BREAKTHROUGH,
+        GOAL_COUNTERATTACK,
+        MISSED_NINE,
+        MISSED_SEVEN,
+        MISSED_SIX,
+        MISSED_WING,
+        MISSED_BREAKTHROUGH,
+        MISSED_COUNTERATTACK,
+        LOSS_OF_BALL,
+        BALL_WIN,
+        ASSIST,
+        FETCHED_SEVEN_M,
+        CAUSED_SEVEN_M,
+        FETCHED_TWO_MINUTES,
+        YELLOW_CARD,
+        TWO_MINUTES,
+        RED_CARD,
+        TECHNICAL_MISTAKE,
+        PASS_CATCH_MISTAKE
+    }
+
     private final String name;
     private final int number;
     private final boolean isGoalkeeper;
-
-    //Keeperaktion
-    private int hitByKeeper = 0;
-    private int missByKeeper = 0;
-    private int saveNine = 0;
-    private int saveSeven = 0;
-    private int saveSix = 0;
-    private int saveWing = 0;
-    private int saveBreakthrough = 0;
-    private int saveCounterattack = 0;
-    private int concededNine = 0;
-    private int concededSeven = 0;
-    private int concededSix = 0;
-    private int concededWing = 0;
-    private int concededBreakthrough = 0;
-    private int concededCounterattack = 0;
-
-    //Feldspieleraktion
-    private int goalNine = 0;
-    private int goalSeven = 0;
-    private int goalSix = 0;
-    private int goalWing = 0;
-    private int goalBreakthrough = 0;
-    private int goalCounterattack = 0;
-    private int missedNine = 0;
-    private int missedSeven = 0;
-    private int missedSix = 0;
-    private int missedWing = 0;
-    private int missedBreakthrough = 0;
-    private int missedCounterattack = 0;
-
-    //Spieleraktion
-    private int lossOfBall = 0;
-    private int ballWin = 0;
-    private int assist = 0;
-    private int fetchedSevenM = 0;
-    private int causedSevenM = 0;
-    private int fetchedTwoMinutes = 0;
-    private int yellowCard = 0;
-    private int twoMinutes = 0;
-    private int redCard = 0;
-    private int technicalMistake = 0;
-    private int passCatchMistake = 0;
-
-
+    private final Map<Action, Integer> actionStats;
 
     public Player(String name, int number, boolean isGoalkeeper) {
         this.name = name;
         this.number = number;
         this.isGoalkeeper = isGoalkeeper;
-    }
+        this.actionStats = new HashMap<>();
 
+        for (Action action : Action.values()) {
+            actionStats.put(action, 0);
+        }
+    }
 
     public String getName() {
         return name;
@@ -68,298 +71,304 @@ public class Player {
     }
 
     public int getHitByKeeper() {
-        return hitByKeeper;
+        return actionStats.get(Action.HIT_BY_KEEPER);
     }
 
-    public void setHitByKeeper(int hitByKeeper) {
-        this.hitByKeeper = hitByKeeper;
+    public void setHitByKeeper(int value) {
+        actionStats.put(Action.HIT_BY_KEEPER, value);
     }
 
     public int getMissByKeeper() {
-        return missByKeeper;
+        return actionStats.get(Action.MISS_BY_KEEPER);
     }
 
-    public void setMissByKeeper(int missByKeeper) {
-        this.missByKeeper = missByKeeper;
+    public void setMissByKeeper(int value) {
+        actionStats.put(Action.MISS_BY_KEEPER, value);
     }
 
     public int getSaveNine() {
-        return saveNine;
+        return actionStats.get(Action.SAVE_NINE);
     }
 
-    public void setSaveNine(int saveNine) {
-        this.saveNine = saveNine;
+    public void setSaveNine(int value) {
+        actionStats.put(Action.SAVE_NINE, value);
     }
 
     public int getSaveSeven() {
-        return saveSeven;
+        return actionStats.get(Action.SAVE_SEVEN);
     }
 
-    public void setSaveSeven(int saveSeven) {
-        this.saveSeven = saveSeven;
+    public void setSaveSeven(int value) {
+        actionStats.put(Action.SAVE_SEVEN, value);
     }
 
     public int getSaveSix() {
-        return saveSix;
+        return actionStats.get(Action.SAVE_SIX);
     }
 
-    public void setSaveSix(int saveSix) {
-        this.saveSix = saveSix;
+    public void setSaveSix(int value) {
+        actionStats.put(Action.SAVE_SIX, value);
     }
 
     public int getSaveWing() {
-        return saveWing;
+        return actionStats.get(Action.SAVE_WING);
     }
 
-    public void setSaveWing(int saveWing) {
-        this.saveWing = saveWing;
+    public void setSaveWing(int value) {
+        actionStats.put(Action.SAVE_WING, value);
     }
 
     public int getSaveBreakthrough() {
-        return saveBreakthrough;
+        return actionStats.get(Action.SAVE_BREAKTHROUGH);
     }
 
-    public void setSaveBreakthrough(int saveBreakthrough) {
-        this.saveBreakthrough = saveBreakthrough;
+    public void setSaveBreakthrough(int value) {
+        actionStats.put(Action.SAVE_BREAKTHROUGH, value);
     }
 
     public int getSaveCounterattack() {
-        return saveCounterattack;
+        return actionStats.get(Action.SAVE_COUNTERATTACK);
     }
 
-    public void setSaveCounterattack(int saveCounterattack) {
-        this.saveCounterattack = saveCounterattack;
+    public void setSaveCounterattack(int value) {
+        actionStats.put(Action.SAVE_COUNTERATTACK, value);
     }
+
 
     public int getConcededNine() {
-        return concededNine;
+        return actionStats.get(Action.CONCEDED_NINE);
     }
 
-    public void setConcededNine(int concededNine) {
-        this.concededNine = concededNine;
+    public void setConcededNine(int value) {
+        actionStats.put(Action.CONCEDED_NINE, value);
     }
 
     public int getConcededSeven() {
-        return concededSeven;
+        return actionStats.get(Action.CONCEDED_SEVEN);
     }
 
-    public void setConcededSeven(int concededSeven) {
-        this.concededSeven = concededSeven;
+    public void setConcededSeven(int value) {
+        actionStats.put(Action.CONCEDED_SEVEN, value);
     }
 
     public int getConcededSix() {
-        return concededSix;
+        return actionStats.get(Action.CONCEDED_SIX);
     }
 
-    public void setConcededSix(int concededSix) {
-        this.concededSix = concededSix;
+    public void setConcededSix(int value) {
+        actionStats.put(Action.CONCEDED_SIX, value);
     }
 
     public int getConcededWing() {
-        return concededWing;
+        return actionStats.get(Action.CONCEDED_WING);
     }
 
-    public void setConcededWing(int concededWing) {
-        this.concededWing = concededWing;
+    public void setConcededWing(int value) {
+        actionStats.put(Action.CONCEDED_WING, value);
     }
 
     public int getConcededBreakthrough() {
-        return concededBreakthrough;
+        return actionStats.get(Action.CONCEDED_BREAKTHROUGH);
     }
 
-    public void setConcededBreakthrough(int concededBreakthrough) {
-        this.concededBreakthrough = concededBreakthrough;
+    public void setConcededBreakthrough(int value) {
+        actionStats.put(Action.CONCEDED_BREAKTHROUGH, value);
     }
 
     public int getConcededCounterattack() {
-        return concededCounterattack;
+        return actionStats.get(Action.CONCEDED_COUNTERATTACK);
     }
 
-    public void setConcededCounterattack(int concededCounterattack) {
-        this.concededCounterattack = concededCounterattack;
+    public void setConcededCounterattack(int value) {
+        actionStats.put(Action.CONCEDED_COUNTERATTACK, value);
     }
+
 
     public int getGoalNine() {
-        return goalNine;
+        return actionStats.get(Action.GOAL_NINE);
     }
 
-    public void setGoalNine(int goalNine) {
-        this.goalNine = goalNine;
+    public void setGoalNine(int value) {
+        actionStats.put(Action.GOAL_NINE, value);
     }
 
     public int getGoalSeven() {
-        return goalSeven;
+        return actionStats.get(Action.GOAL_SEVEN);
     }
 
-    public void setGoalSeven(int goalSeven) {
-        this.goalSeven = goalSeven;
+    public void setGoalSeven(int value) {
+        actionStats.put(Action.GOAL_SEVEN, value);
     }
 
     public int getGoalSix() {
-        return goalSix;
+        return actionStats.get(Action.GOAL_SIX);
     }
 
-    public void setGoalSix(int goalSix) {
-        this.goalSix = goalSix;
+    public void setGoalSix(int value) {
+        actionStats.put(Action.GOAL_SIX, value);
     }
 
     public int getGoalWing() {
-        return goalWing;
+        return actionStats.get(Action.GOAL_WING);
     }
 
-    public void setGoalWing(int goalWing) {
-        this.goalWing = goalWing;
+    public void setGoalWing(int value) {
+        actionStats.put(Action.GOAL_WING, value);
     }
 
     public int getGoalBreakthrough() {
-        return goalBreakthrough;
+        return actionStats.get(Action.GOAL_BREAKTHROUGH);
     }
 
-    public void setGoalBreakthrough(int goalBreakthrough) {
-        this.goalBreakthrough = goalBreakthrough;
+    public void setGoalBreakthrough(int value) {
+        actionStats.put(Action.GOAL_BREAKTHROUGH, value);
     }
 
     public int getGoalCounterattack() {
-        return goalCounterattack;
+        return actionStats.get(Action.GOAL_COUNTERATTACK);
     }
 
-    public void setGoalCounterattack(int goalCounterattack) {
-        this.goalCounterattack = goalCounterattack;
+    public void setGoalCounterattack(int value) {
+        actionStats.put(Action.GOAL_COUNTERATTACK, value);
     }
+
 
     public int getMissedNine() {
-        return missedNine;
+        return actionStats.get(Action.MISSED_NINE);
     }
 
-    public void setMissedNine(int missedNine) {
-        this.missedNine = missedNine;
+    public void setMissedNine(int value) {
+        actionStats.put(Action.MISSED_NINE, value);
     }
 
     public int getMissedSeven() {
-        return missedSeven;
+        return actionStats.get(Action.MISSED_SEVEN);
     }
 
-    public void setMissedSeven(int missedSeven) {
-        this.missedSeven = missedSeven;
+    public void setMissedSeven(int value) {
+        actionStats.put(Action.MISSED_SEVEN, value);
     }
 
     public int getMissedSix() {
-        return missedSix;
+        return actionStats.get(Action.MISSED_SIX);
     }
 
-    public void setMissedSix(int missedSix) {
-        this.missedSix = missedSix;
+    public void setMissedSix(int value) {
+        actionStats.put(Action.MISSED_SIX, value);
     }
 
     public int getMissedWing() {
-        return missedWing;
+        return actionStats.get(Action.MISSED_WING);
     }
 
-    public void setMissedWing(int missedWing) {
-        this.missedWing = missedWing;
+    public void setMissedWing(int value) {
+        actionStats.put(Action.MISSED_WING, value);
     }
 
     public int getMissedBreakthrough() {
-        return missedBreakthrough;
+        return actionStats.get(Action.MISSED_BREAKTHROUGH);
     }
 
-    public void setMissedBreakthrough(int missedBreakthrough) {
-        this.missedBreakthrough = missedBreakthrough;
+    public void setMissedBreakthrough(int value) {
+        actionStats.put(Action.MISSED_BREAKTHROUGH, value);
     }
 
     public int getMissedCounterattack() {
-        return missedCounterattack;
+        return actionStats.get(Action.MISSED_COUNTERATTACK);
     }
 
-    public void setMissedCounterattack(int missedCounterattack) {
-        this.missedCounterattack = missedCounterattack;
+    public void setMissedCounterattack(int value) {
+        actionStats.put(Action.MISSED_COUNTERATTACK, value);
     }
+
 
     public int getLossOfBall() {
-        return lossOfBall;
+        return actionStats.get(Action.LOSS_OF_BALL);
     }
 
-    public void setLossOfBall(int lossOfBall) {
-        this.lossOfBall = lossOfBall;
+    public void setLossOfBall(int value) {
+        actionStats.put(Action.LOSS_OF_BALL, value);
     }
 
     public int getBallWin() {
-        return ballWin;
+        return actionStats.get(Action.BALL_WIN);
     }
 
-    public void setBallWin(int ballWin) {
-        this.ballWin = ballWin;
+    public void setBallWin(int value) {
+        actionStats.put(Action.BALL_WIN, value);
     }
 
     public int getAssist() {
-        return assist;
+        return actionStats.get(Action.ASSIST);
     }
 
-    public void setAssist(int assist) {
-        this.assist = assist;
+    public void setAssist(int value) {
+        actionStats.put(Action.ASSIST, value);
     }
 
     public int getFetchedSevenM() {
-        return fetchedSevenM;
+        return actionStats.get(Action.FETCHED_SEVEN_M);
     }
 
-    public void setFetchedSevenM(int fetchedSevenM) {
-        this.fetchedSevenM = fetchedSevenM;
+    public void setFetchedSevenM(int value) {
+        actionStats.put(Action.FETCHED_SEVEN_M, value);
     }
 
     public int getCausedSevenM() {
-        return causedSevenM;
+        return actionStats.get(Action.CAUSED_SEVEN_M);
     }
 
-    public void setCausedSevenM(int causedSevenM) {
-        this.causedSevenM = causedSevenM;
+    public void setCausedSevenM(int value) {
+        actionStats.put(Action.CAUSED_SEVEN_M, value);
     }
 
     public int getFetchedTwoMinutes() {
-        return fetchedTwoMinutes;
+        return actionStats.get(Action.FETCHED_TWO_MINUTES);
     }
 
-    public void setFetchedTwoMinutes(int fetchedTwoMinutes) {
-        this.fetchedTwoMinutes = fetchedTwoMinutes;
+    public void setFetchedTwoMinutes(int value) {
+        actionStats.put(Action.FETCHED_TWO_MINUTES, value);
     }
+
 
     public int getYellowCard() {
-        return yellowCard;
+        return actionStats.get(Action.YELLOW_CARD);
     }
 
-    public void setYellowCard(int yellowCard) {
-        this.yellowCard = yellowCard;
+    public void setYellowCard(int value) {
+        actionStats.put(Action.YELLOW_CARD, value);
     }
 
     public int getTwoMinutes() {
-        return twoMinutes;
+        return actionStats.get(Action.TWO_MINUTES);
     }
 
-    public void setTwoMinutes(int twoMinutes) {
-        this.twoMinutes = twoMinutes;
+    public void setTwoMinutes(int value) {
+        actionStats.put(Action.TWO_MINUTES, value);
     }
 
     public int getRedCard() {
-        return redCard;
+        return actionStats.get(Action.RED_CARD);
     }
 
-    public void setRedCard(int redCard) {
-        this.redCard = redCard;
+    public void setRedCard(int value) {
+        actionStats.put(Action.RED_CARD, value);
     }
 
     public int getTechnicalMistake() {
-        return technicalMistake;
+        return actionStats.get(Action.TECHNICAL_MISTAKE);
     }
 
-    public void setTechnicalMistake(int technicalMistake) {
-        this.technicalMistake = technicalMistake;
+    public void setTechnicalMistake(int value) {
+        actionStats.put(Action.TECHNICAL_MISTAKE, value);
     }
 
     public int getPassCatchMistake() {
-        return passCatchMistake;
+        return actionStats.get(Action.PASS_CATCH_MISTAKE);
     }
 
-    public void setPassCatchMistake(int passCatchMistake) {
-        this.passCatchMistake = passCatchMistake;
+    public void setPassCatchMistake(int value) {
+        actionStats.put(Action.PASS_CATCH_MISTAKE, value);
     }
+
 }
