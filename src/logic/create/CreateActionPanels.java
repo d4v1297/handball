@@ -1,9 +1,12 @@
 package logic.create;
 
+import Model.Player;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class CreateActionPanels {
-    //Spieler Radio Buttons
+
     private static JRadioButton lossOfBallRadioButton;
     private static JRadioButton ballWinRadioButton;
     private static JRadioButton assistRadioButton;
@@ -15,7 +18,7 @@ public class CreateActionPanels {
     private static JRadioButton yellowCardRadioButton;
     private static JRadioButton twoMinutesRadioButton;
     private static JRadioButton redCardRadioButton;
-    //Torhüter Radio Buttons
+
     private static JRadioButton hitKeeperRadioButton;
     private static JRadioButton missKeeperRadioButton;
     private static JRadioButton saveNineRadioButton;
@@ -30,7 +33,7 @@ public class CreateActionPanels {
     private static JRadioButton concededWingRadioButton;
     private static JRadioButton concededBreakthroughRadioButton;
     private static JRadioButton concededCounterattakRadioButton;
-    //Feldspeler  Radio Buttons
+
     private static JRadioButton goalNineRadioButton;
     private static JRadioButton goalSevenRadioButton;
     private static JRadioButton goalSixRadioButton;
@@ -61,7 +64,6 @@ public class CreateActionPanels {
         concededCounterattakRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "Gegentor Gegenstoß", "concededCounterattack");
     }
 
-    // Code für Feldspieler-Aktionen
     public static void createFieldPlayerActionPanel(JPanel actionPanel) {
         goalNineRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "Tor 9m", "goalNine");
         goalSevenRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "Tor 7m", "goalSeven");
@@ -89,5 +91,16 @@ public class CreateActionPanels {
         yellowCardRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "Gelbe Karte", "yellowCard");
         twoMinutesRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "2 Minuten", "twoMinutes");
         redCardRadioButton = CreateButtons.createAndAddRadioButton(actionPanel, "Rote Karte", "redCard");
+    }
+
+    public static JPanel createActionPanel(Player player) {
+        JPanel actionPanel = new JPanel(new GridLayout(3, 1));
+        if (player.isGoalkeeper()) {
+            CreateActionPanels.createGoalkeeperActionPanel(actionPanel);
+        } else {
+            CreateActionPanels.createFieldPlayerActionPanel(actionPanel);
+        }
+        CreateActionPanels.createCommonActionPanel(actionPanel);
+        return actionPanel;
     }
 }
