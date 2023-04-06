@@ -1,4 +1,4 @@
-package logic.create;
+package LOGIC.create;
 
 import Model.Player;
 

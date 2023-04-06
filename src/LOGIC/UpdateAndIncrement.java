@@ -1,4 +1,4 @@
-package logic;
+package LOGIC;
 
 import Model.Player;
 

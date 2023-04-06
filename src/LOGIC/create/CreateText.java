@@ -1,4 +1,4 @@
-package logic.create;
+package LOGIC.create;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,5 +30,15 @@ public class CreateText {
         textArea.setForeground(accentColor);
         textArea.setFont(font);
         return textArea;
+    }
+
+    /**
+     * Methode zum Hinzufügen eines Labels und eines Textfelds zu einem JPanel.
+     * Erstellt ein neues JLabel mit dem angegebenen Text.
+     * Fügt das JLabel und das angegebene JTextField dem JPanel hinzu.
+     */
+    public static void addLabelAndTextField(JPanel panel, String labelText, JTextField textField) {
+        panel.add(new JLabel(labelText)); // Erstellt ein neues JLabel mit dem angegebenen Text und fügt es dem JPanel hinzu
+        panel.add(textField); // Fügt das angegebene JTextField dem JPanel hinzu
     }
 }

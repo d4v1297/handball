@@ -1,11 +1,11 @@
 package GUI;
 
 import Model.Player;
-import logic.UpdateAndIncrement;
-import logic.create.CreateActionPanels;
-import logic.create.CreateButtons;
-import logic.create.CreateText;
-import logic.create.LookAndFeel;
+import LOGIC.UpdateAndIncrement;
+import LOGIC.create.CreateActionPanels;
+import LOGIC.create.CreateButtons;
+import LOGIC.create.CreateText;
+import LOGIC.create.LookAndFeel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -102,8 +102,8 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
         JPanel inputPanel = new JPanel(); // Erstellt ein JPanel
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS)); // Setzt das Layout des JPanels auf ein vertikales BoxLayout
 
-        addLabelAndTextField(inputPanel, "Name:", nameField); // Fügt ein Label und ein Textfeld für den Namen des Spielers zum JPanel hinzu
-        addLabelAndTextField(inputPanel, "Trikotnummer:", numberField); // Fügt ein Label und ein Textfeld für die Rückennummer des Spielers zum JPanel hinzu
+        CreateText.addLabelAndTextField(inputPanel, "Name:", nameField); // Fügt ein Label und ein Textfeld für den Namen des Spielers zum JPanel hinzu
+        CreateText.addLabelAndTextField(inputPanel, "Trikotnummer:", numberField); // Fügt ein Label und ein Textfeld für die Rückennummer des Spielers zum JPanel hinzu
 
         inputPanel.add(fieldPlayerRadioButton); // Fügt den Radio-Button für Feldspieler zum JPanel hinzu
         inputPanel.add(goalkeeperRadioButton); // Fügt den Radio-Button für Torhüter zum JPanel hinzu
@@ -251,15 +251,7 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
         nameField.requestFocus(); // Setzt den Fokus auf das Name-Textfeld
     }
 
-    /**
-     * Methode zum Hinzufügen eines Labels und eines Textfelds zu einem JPanel.
-     * Erstellt ein neues JLabel mit dem angegebenen Text.
-     * Fügt das JLabel und das angegebene JTextField dem JPanel hinzu.
-     */
-    private void addLabelAndTextField(JPanel panel, String labelText, JTextField textField) {
-        panel.add(new JLabel(labelText)); // Erstellt ein neues JLabel mit dem angegebenen Text und fügt es dem JPanel hinzu
-        panel.add(textField); // Fügt das angegebene JTextField dem JPanel hinzu
-    }
+
 
     /**
      * Main-Methode zum Starten der Anwendung.
