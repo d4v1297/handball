@@ -1,8 +1,16 @@
+package logic;
+
+import GUI.HandballStatsGUI;
+import Model.Player;
+
+import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Set;
 
-public class Aktionplus {
+public class UpdateAndIncrement {
+
     private static final Set<String> TORHUETER_AKTIONEN = Set.of("hitByKeeper", "missByKeeper", "saveNine", "saveSeven", "saveSix",
             "saveWing", "saveBreakthrough", "saveCounterattack", "concededNine", "concededSeven", "concededSix",
             "concededWing", "concededBreakthrough", "concededCounterattack");
@@ -13,7 +21,7 @@ public class Aktionplus {
     private static final Set<String> SPIELER_AKTIONEN = Set.of("lossOfBall", "ballWin", "assist", "fetchedSevenM", "causedSevenM",
             "fetchedTwoMinutes", "yellowCard", "twoMinutes", "redCard", "technicalMistake", "passCatchMistake");
 
-    static void updatePlayerStats(Player player, String action) {
+    public static void updatePlayerStats(Player player, String action) {
         if (TORHUETER_AKTIONEN.contains(action) || FELDSPIELER_AKTIONEN.contains(action) || SPIELER_AKTIONEN.contains(action)) {
             incrementPlayerStat(player, action);
             System.out.println(player.getGoalSix());
