@@ -1,6 +1,6 @@
-package LOGIC;
+package LOGIC.buissneslogic;
 
-import Model.Player;
+import MODEL.Player;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,11 +1,11 @@
 package LOGIC.create;
 
-import Model.Player;
+import MODEL.Player;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateActionPanels {
+public class CreatePanels {
 
     private static JRadioButton lossOfBallRadioButton;
     private static JRadioButton ballWinRadioButton;
@@ -96,11 +96,13 @@ public class CreateActionPanels {
     public static JPanel createActionPanel(Player player) {
         JPanel actionPanel = new JPanel(new GridLayout(3, 1));
         if (player.isGoalkeeper()) {
-            CreateActionPanels.createGoalkeeperActionPanel(actionPanel);
+            CreatePanels.createGoalkeeperActionPanel(actionPanel);
         } else {
-            CreateActionPanels.createFieldPlayerActionPanel(actionPanel);
+            CreatePanels.createFieldPlayerActionPanel(actionPanel);
         }
-        CreateActionPanels.createCommonActionPanel(actionPanel);
+        CreatePanels.createCommonActionPanel(actionPanel);
         return actionPanel;
     }
+
+
 }
