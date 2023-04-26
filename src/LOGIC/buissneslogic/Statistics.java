@@ -3,10 +3,19 @@ package LOGIC.buissneslogic;
 import MODEL.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
 public class Statistics {
     public static void showStats(HashMap<String, Player> playerMap, JPanel statsPanel) {
+
+        ResultCalculator.getTore(playerMap);
+        ResultCalculator.getGegenTore(playerMap);
+        JLabel tore = new JLabel("Tore: " + ResultCalculator.getTore(playerMap));
+        JLabel gegenTore = new JLabel("Gegentore: " + ResultCalculator.getGegenTore(playerMap));
+        statsPanel.add(tore);
+        statsPanel.add(gegenTore);
+
         for (String name : playerMap.keySet()) {
             Player player = playerMap.get(name);
             String position = player.isGoalkeeper() ? "Torhüter" : "Feldspieler";
@@ -28,11 +37,7 @@ public class Statistics {
                 JLabel concededBreaktrough = new JLabel("Gegentor Durchbruch: " + player.getConcededBreakthrough());
                 JLabel concededCounterattack = new JLabel("Gegentor Gegenstoß: " + player.getConcededCounterattack());
 
-
-
                 //Calc Parade
-
-
                 JLabel paradenLabel = new JLabel("Quote" + RateCalculator.getParadeRate(player) + "%");
 
                 statsPanel.add(nameLabel);
@@ -65,7 +70,6 @@ public class Statistics {
                 JLabel missedWing = new JLabel("Fehlwurf Flügel : " + player.getConcededSeven());
                 JLabel missedBreakthrough = new JLabel("Fehlwurf Durchbruch : " + player.getConcededSix());
                 JLabel missedCounterattack = new JLabel("Fehlwurf Gegenstoß : " + player.getConcededSix());
-
 
 
                 //Wurfquote
