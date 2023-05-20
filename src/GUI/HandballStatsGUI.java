@@ -133,7 +133,7 @@ public class HandballStatsGUI extends JFrame implements ActionListener {
         if (statsPanel == null) {
             statsPanel = new JPanel();
             statsPanel.setLayout(new BoxLayout(statsPanel, BoxLayout.Y_AXIS));
-            Statistics.showStats(playerMap,  statsPanel);
+            Statistics.showStats(playerMap, statsPanel);
         }
         JFrame statsFrame = new JFrame("Statistik");
         statsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
